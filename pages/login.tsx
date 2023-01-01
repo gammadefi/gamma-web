@@ -1,11 +1,20 @@
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import React, {useState} from 'react'
+import { toast } from 'react-hot-toast'
 
 const login = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false)
+    const router = useRouter()
 
     const submitEmail = async () => {
         setIsLoading(true)
+
+        setTimeout(() => {
+           setIsLoading(false) 
+           toast.success("login successfully")
+           router.replace('/')
+        }, 5000);
     }
   return (
     <div className='h-screen bg-gray-900 text-white px-8 py-8 flex items-center justify-center'>
