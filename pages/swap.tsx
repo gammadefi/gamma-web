@@ -3,6 +3,7 @@ import {AiOutlineSetting} from "react-icons/ai"
 import {MdOutlineSwapVert} from "react-icons/md"
 import Link from 'next/link'
 import Sidebar from '../components/Sidebar'
+import BottomTab from '../components/BottomTab'
 
 function swap() {
 
@@ -23,9 +24,10 @@ function swap() {
   return (
     <div className='h-screen bg-gray-900 text-white sm:flex items-center'>
       <Sidebar />
-      <div className='overflow-y-auto w-full'>
+      <BottomTab />
+      <div className='overflow-y-auto h-full w-full'>
         <div className='w-full justify-center flex py-8'>
-            <div className='md:w-[420px] sm:w-80 w-72 border border-slate-500  px-3 rounded-lg py-3'>
+            <div className='md:w-[420px] mb-8 md:mb-0 sm:w-80 w-72 border border-slate-500  px-3 rounded-lg py-3'>
                 <div className='flex py-2 items-center justify-between'>
                     <h4 className='text-lg font-bold'>Swap</h4>
                     <button><AiOutlineSetting size={24} /></button>
@@ -56,7 +58,7 @@ function swap() {
                         <h4>~$0</h4>
                     </div>
                 </div>
-                <button className='w-full h-12 rounded-lg disabled:bg-slate-600 bg-gray-200 text-gray-800'>Approve</button>
+                <button className='w-full  h-12 rounded-lg disabled:bg-slate-600 bg-gray-200 text-gray-800'>Approve</button>
 
             </div>
 

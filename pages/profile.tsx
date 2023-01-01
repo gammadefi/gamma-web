@@ -5,6 +5,7 @@ import {IoIosSwap} from "react-icons/io"
 import {CgProfile} from "react-icons/cg"
 import Link from 'next/link'
 import Sidebar from '../components/Sidebar'
+import BottomTab from '../components/BottomTab'
 
 function profile() {
 
@@ -25,6 +26,7 @@ function profile() {
   return (
     <div className='h-screen bg-gray-900 text-white sm:flex items-center'>
       <Sidebar />
+      <BottomTab />
       <div className='overflow-y-auto'>
 
       </div>

@@ -1,8 +1,9 @@
 import React from "react";
-import { RiHome5Fill } from "react-icons/ri";
+import { RiHome5Fill,RiHome5Line } from "react-icons/ri";
 import { BsWallet2 } from "react-icons/bs";
 import { IoIosSwap } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
+import {MdLogout} from "react-icons/md"
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -11,8 +12,12 @@ const Sidebar = () => {
 
   console.log(router.pathname);
 
+  const logOut = () => {
+    router.replace("/login")
+  }
+
   return (
-    <div className="sm:block shrink-0 bg-gray-800 hidden py-4 px-3 border-gray-600 w-48 md:w-72 h-full border-r">
+    <div className="sm:block relative shrink-0 bg-gray-800 hidden py-4 px-3 border-gray-600 w-48 md:w-72 h-full border-r">
       <div>
         <img src="/logo-dark.svg" className="mx-auto w-10 h-10 mt-5" />
       </div>
@@ -24,7 +29,7 @@ const Sidebar = () => {
             }  mt-3 gap-3 w-full flex items-center px-8 active:text-blue-300 h-14 rounded-full`}
           >
             <Link href="/" className=" gap-3 w-full flex items-center">
-              <RiHome5Fill size={24} />
+              <RiHome5Line size={24} />
               <h4 className="font-semibol">Home</h4>
             </Link>
           </li>
@@ -63,6 +68,12 @@ const Sidebar = () => {
             </Link>
           </li>
         </ul>
+      </div>
+      <div className="w-full absolute bottom-0  px-4 py-4">
+         <button onClick={() => logOut()} className="flex items-center gap-4 px-3">
+            <MdLogout size={24} />
+            Logout
+         </button>
       </div>
     </div>
   );
