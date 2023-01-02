@@ -35,7 +35,7 @@ function swap() {
                 </div>
                 <div className='bg-slate-800 rounded-lg my-3 pt-4 w-full'>
                     <div className='flex justify-between items-center px-3 py-2 border-b border-slate-600'>
-                       <button>ETH</button>
+                       <button className='flex items-center gap-2'><img src='/eth.svg' />ETH</button>
                        <input defaultValue={0} className='bg-transparent w-full text-right py-3 px-3 focus:outline-none' />
                     </div>
                     <div className='flex justify-between items-center py-3 px-3'>
@@ -50,7 +50,7 @@ function swap() {
 
                 <div className='bg-slate-800 rounded-lg my-3 pt-4 w-full'>
                     <div className='flex justify-between items-center px-3 py-2 border-b border-slate-600'>
-                       <button>Matic</button>
+                       <button className='flex items-center gap-2'><img src="/matic.svg" alt="" /> Matic</button>
                        <input defaultValue={0} className='bg-transparent w-full text-right py-3 px-3 focus:outline-none' />
                     </div>
                     <div className='flex justify-between items-center py-3 px-3'>

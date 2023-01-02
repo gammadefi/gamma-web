@@ -75,7 +75,12 @@ function wallet() {
                   scope="row"
                   className="py-4 px-6 font-medium  whitespace-nowrap text-white"
                 >
-                  ETH • <span className="text-gray-400">Ether - PoS </span>
+                     <div className="flex items-center gap-2">
+                        <img src="/eth.svg" />
+                        <span>ETH • <span className="text-gray-400">Ether - PoS</span></span>
+                    </div>
+                    
+                  
                 </th>
                 <td className="py-4 px-6">
                   0.00 • <span className="text-gray-400">$0.00</span>
@@ -111,7 +116,12 @@ function wallet() {
                   scope="row"
                   className="py-4 px-6 font-medium  whitespace-nowrap text-white"
                 >
-                  USDC • <span className="text-gray-400">USD coin </span>
+                    <div className="flex items-center gap-2">
+                        <img src="/usdc.svg" />
+                        <span>USDC • <span className="text-gray-400">USD coin </span></span>
+                    </div>
+                  
+                  
                 </th>
                 <td className="py-4 px-6">
                   0.00 • <span className="text-gray-400">$0.00</span>
@@ -147,7 +157,12 @@ function wallet() {
                   scope="row"
                   className="py-4 px-6 font-medium  whitespace-nowrap text-white"
                 >
-                  MATIC • <span className="text-gray-400">Matic - Token </span>
+                    <div className="flex items-center gap-2">
+                        <img src="/matic.svg" />
+                        <span>MATIC • <span className="text-gray-400">Matic - Token </span></span>
+                    </div>
+                    
+                  
                 </th>
                 <td className="py-4 px-6">
                   0.00 • <span className="text-gray-400">$0.00</span>
@@ -183,7 +198,11 @@ function wallet() {
                   scope="row"
                   className="py-4 px-6 font-medium  whitespace-nowrap text-white"
                 >
-                  USDT • <span className="text-gray-400">Tether - USD </span>
+                    <div className="flex items-center gap-2">
+                        <img src="/usdt.svg" />
+                        <span>USDT • <span className="text-gray-400">Tether - USD </span></span>
+                    </div>
+                 
                 </th>
                 <td className="py-4 px-6">
                   0.00 • <span className="text-gray-400">$0.00</span>
@@ -219,7 +238,11 @@ function wallet() {
                   scope="row"
                   className="py-4 px-6 font-medium  whitespace-nowrap text-white"
                 >
-                  DAI • <span className="text-gray-400">Dai - PoS </span>
+                    <div className="flex items-center gap-2">
+                        <img src="/dai.svg" />
+                        <span> DAI • <span className="text-gray-400">Dai - PoS </span></span>
+                    </div>
+                 
                 </th>
                 <td className="py-4 px-6">
                   0.00 • <span className="text-gray-400">$0.00</span>
