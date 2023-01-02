@@ -1,15 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { FiSend } from "react-icons/fi";
 import { AiOutlineInfoCircle, AiOutlineQrcode } from "react-icons/ai";
+import {IoIosCopy} from "react-icons/io"
 import {BsBoxArrowInUpRight} from "react-icons/bs"
 import Link from "next/link";
 import Sidebar from "../components/Sidebar";
 import BottomTab from "../components/BottomTab";
+import Modal from "../components/Modal";
+import QRCode from "react-qr-code";
 
 function wallet() {
+  const [receiveModal, setIsReceiveModal] = useState<boolean>(false)
   const isSignedIn: any = () => {
     return true;
   };
+
+  const closeModal = () => {
+    setIsReceiveModal(false)
+  }
 
   useEffect(() => {
     if (isSignedIn === false) {
@@ -19,6 +27,17 @@ function wallet() {
 
   return (
     <div className="h-screen bg-gray-900 text-white sm:flex items-center">
+      <Modal open={receiveModal} onClick={() => closeModal()} > 
+        <div className="w-56 md:w-96 py-4">
+            <h3 className="text-center text-2xl font-bold text-black">Scan QR Code</h3>
+            <h5 className="text-center font-semibold text-gray-500">to receive your wallet address</h5>
+            <QRCode value="0xebb07a5787650ba385ba7111fc4d3a994b6dbaa6" className="mx-auto w-36 h-auto mt-3" />
+            <h5 className="text-center font-semibold text-gray-800 mt-4">wallet address</h5>
+            <h5 className="text-center break-words text-sm font-semibold text-gray-500 mt-3">0xebb07a5787650ba385ba7111fc4d3a994b6dbaa6</h5>
+
+            <button onClick={() => {navigator.clipboard.writeText('0xebb07a5787650ba385ba7111fc4d3a994b6dbaa6')}} style={{ padding: "10px 20px", width: "120px" }} className="bg-slate-800 mx-auto mt-3 flex items-center justify-center gap-2 border font-bold border-slate-500 rounded-lg"><IoIosCopy /> Copy</button>
+        </div>
+     </Modal>
       <Sidebar />
       <BottomTab />
       <div className="overflow-y-auto h-full w-full">
@@ -33,6 +52,7 @@ function wallet() {
 
           <div className="mt-8 flex items-center gap-3">
             <button
+              onClick={() => setIsReceiveModal(true)}
               style={{ padding: "10px 20px", width: "120px" }}
               className="bg-slate-800 flex items-center justify-center gap-2 border font-bold border-slate-500 rounded-lg"
             >

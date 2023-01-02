@@ -28,7 +28,7 @@ function index() {
                   <img src="/card.png" className="h-40 w-auto mx-auto mt-8" />
                 <h2 className="text-center text-lg font-bold text-gray-100">No Cards</h2>
                 <h4 className="text-center text-gray-400 mt-2">Create a new virtual card to start  <br/> spending assets</h4>
-                <button style={{padding:"10px 20px",}} className='bg-blue-300 flex text-slate-800 items-center justify-center gap-2 border font-bold border-slate-500 rounded-full mx-auto mt-4'><CiCreditCard1 size={20}/>New Card</button>
+                <button onClick={() => router.replace("cards/new")} style={{padding:"10px 20px",}} className='bg-blue-300 flex text-slate-800 items-center justify-center gap-2 border font-bold border-slate-500 rounded-full mx-auto mt-4'><CiCreditCard1 size={20}/>New Card</button>
                 </div>
             </div>
         </div>
