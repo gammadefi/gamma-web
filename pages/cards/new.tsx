@@ -8,14 +8,14 @@ function newCard() {
             
             <h3 className='font-semibold md:text-xl text-lg text-gray-200 mt-1'>Create a new card</h3>
 
-            <div className='mt-6 w-full'>
+            <div className='mt-6 w-full px-3'>
 
-                 <div className="mx-auto md:w-[400px] w-[320px]">
+                 <div className="mx-auto md:w-[400px] sm:w-[320px] w-full">
                  <label className='font-semibold text-gray-200'>Pick a theme</label>
                  <ThemePicker onChange={(val:any) => console.log(val)
                  } />
                 </div>
-                <div className="mx-auto mt-5 md:w-[400px] w-[320px]">
+                <div className="mx-auto mt-5 md:w-[400px] sm:w-[320px] w-full">
                     <label className='font-semibold text-gray-200'>Name on card</label>
                     <input placeholder='eg. John Doe' className='h-12 w-full mx-auto border bg-transparent mt-2 rounded px-4' />
                 </div>
