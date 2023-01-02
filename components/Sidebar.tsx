@@ -17,7 +17,7 @@ const Sidebar = () => {
   }
 
   return (
-    <div className="sm:block relative shrink-0 bg-gray-800 hidden py-4 px-3 border-gray-600 w-48 md:w-72 h-full border-r">
+    <div className="md:block relative shrink-0 bg-gray-800 hidden py-4 px-3 border-gray-600 w-48 md:w-72 h-full border-r">
       <div>
         <img src="/logo-dark.svg" className="mx-auto w-10 h-10 mt-5" />
       </div>
