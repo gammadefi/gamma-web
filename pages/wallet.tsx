@@ -49,7 +49,7 @@ function wallet() {
           <a target='_blank' className="flex items-center gap-3 mt-3 text-gray-300" href="https://polygonscan.com/address/0xebb07a5787650ba385ba7111fc4d3a994b6dbaa6">View all transactions <BsBoxArrowInUpRight/></a>
         </div>
 
-        <div className="overflow-x-auto mb- relative">
+        <div className="overflow-x-auto md:mb-0 mb-20 relative">
 
           <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             
@@ -73,7 +73,7 @@ function wallet() {
               <tr className=" border-slate-700 border-b bg-slate-800">
                 <th
                   scope="row"
-                  className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  className="py-4 px-6 font-medium  whitespace-nowrap text-white"
                 >
                   ETH • <span className="text-gray-400">Ether - PoS </span>
                 </th>
@@ -109,7 +109,7 @@ function wallet() {
               <tr className=" border-slate-700 border-b bg-slate-800">
                 <th
                   scope="row"
-                  className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  className="py-4 px-6 font-medium  whitespace-nowrap text-white"
                 >
                   USDC • <span className="text-gray-400">USD coin </span>
                 </th>
@@ -145,7 +145,7 @@ function wallet() {
               <tr className=" border-slate-700 border-b bg-slate-800">
                 <th
                   scope="row"
-                  className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  className="py-4 px-6 font-medium  whitespace-nowrap text-white"
                 >
                   MATIC • <span className="text-gray-400">Matic - Token </span>
                 </th>
@@ -181,7 +181,7 @@ function wallet() {
               <tr className=" border-slate-700 border-b bg-slate-800">
                 <th
                   scope="row"
-                  className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  className="py-4 px-6 font-medium  whitespace-nowrap text-white"
                 >
                   USDT • <span className="text-gray-400">Tether - USD </span>
                 </th>
@@ -217,7 +217,7 @@ function wallet() {
               <tr className=" border-slate-700 border-b bg-slate-800">
                 <th
                   scope="row"
-                  className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  className="py-4 px-6 font-medium  whitespace-nowrap text-white"
                 >
                   DAI • <span className="text-gray-400">Dai - PoS </span>
                 </th>
