@@ -25,6 +25,7 @@ function index() {
             <h4 className='text-sm md:text-lg font-semibold'>Hi @Emekaag</h4>
             <div className="w-full flex items-center  mt-4 justify-center">
                 <div>
+                  <img src="/card.png" className="h-40 w-auto mx-auto mt-8" />
                 <h2 className="text-center text-lg font-bold text-gray-100">No Cards</h2>
                 <h4 className="text-center text-gray-400 mt-2">Create a new virtual card to start  <br/> spending assets</h4>
                 <button style={{padding:"10px 20px",}} className='bg-blue-300 flex text-slate-800 items-center justify-center gap-2 border font-bold border-slate-500 rounded-full mx-auto mt-4'><CiCreditCard1 size={20}/>New Card</button>
