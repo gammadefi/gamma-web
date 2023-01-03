@@ -12,6 +12,7 @@ function newCard() {
     setStep((prev) => prev + 1);
   };
 
+    const newLocal = <ThemePicker onChange={(val: any) => console.log(val)} />;
   return (
     <div className="h-screen bg-gray-900 relative text-white px-8 py-8 flex items-center justify-center">
       <button
@@ -31,7 +32,7 @@ function newCard() {
                 <label className="font-semibold text-gray-200">
                   Pick a theme
                 </label>
-                <ThemePicker onChange={(val: any) => console.log(val)} />
+                {newLocal}
               </div>
               <div className="mx-auto mt-5 md:w-[400px] sm:w-[320px] w-full">
                 <label className="font-semibold text-gray-200">
