@@ -36,26 +36,34 @@ function profile() {
               </h4>
             </div>
           </div>
-
+          <div className="flex items-center gap-2">
           <button
-            style={{ padding: "10px 20px", width: "200px" }}
+            style={{ padding: "10px 20px",}}
             className="bg-slate-800 mt-5 md:mt-0 flex items-center justify-center gap-2 border font-bold border-slate-500 rounded-lg"
           >
             Edit Profile Photo
           </button>
+          <button
+            style={{ padding: "10px 20px", }}
+            className="bg-slate-800 mt-5 md:mt-0 flex items-center justify-center gap-2 border font-bold border-slate-500 rounded-lg"
+          >
+            settings
+          </button>
+          </div>
+         
         </div>
 
-        <div className="w-full rounded-lg border-2 mt-8 border-slate-600">
-          <div className="border-b-2 border-slate-600 px-3 py-5">
+        <div className="w-full rounded-lg border mt-8 border-slate-600">
+          <div className="border-b border-slate-600 px-3 py-5">
             <h3 className="text-xl font-semibold">Personal Info</h3>
           </div>
-          <div className="border-b-2 flex items-center justify-between border-slate-600 hover:bg-slate-700 px-3 md:px-5 py-5">
+          <div className="border-b flex items-center justify-between border-slate-600 hover:bg-slate-700 px-3 md:px-5 py-5">
             <h3 className="text-base font-semibold text-gray-300">
               Legal name
             </h3>
             <h3 className="text-lg font-bold text-gray-300">Emeka Agu</h3>
           </div>
-          <div className="border-b-2 flex items-center justify-between border-slate-600 hover:bg-slate-700 px-3 md:px-5 py-5">
+          <div className="border-b flex items-center justify-between border-slate-600 hover:bg-slate-700 px-3 md:px-5 py-5">
             <h3 className="text-base font-semibold text-gray-300">
               Date of birth
             </h3>
@@ -67,17 +75,17 @@ function profile() {
           </div>
         </div>
 
-        <div className="w-full rounded-lg border-2 mt-8 border-slate-600">
-          <div className="border-b-2 border-slate-600 px-3 py-5">
+        <div className="w-full rounded-lg border mt-8 border-slate-600">
+          <div className="border-b border-slate-600 px-3 py-5">
             <h3 className="text-xl font-semibold">Contact Info</h3>
           </div>
-          <div className="border-b-2 flex items-center justify-between border-slate-600 hover:bg-slate-700 px-3 md:px-5 py-5">
+          <div className="border-b flex items-center justify-between border-slate-600 hover:bg-slate-700 px-3 md:px-5 py-5">
             <h3 className="text-base font-semibold text-gray-300">
               Display name
             </h3>
             <h3 className="text-lg font-bold text-gray-300">@Emekaag</h3>
           </div>
-          <div className="border-b-2 flex items-center justify-between border-slate-600 hover:bg-slate-700 px-3 md:px-5 py-5">
+          <div className="border-b flex items-center justify-between border-slate-600 hover:bg-slate-700 px-3 md:px-5 py-5">
             <h3 className="text-base font-semibold text-gray-300">
              Email address
             </h3>
@@ -89,7 +97,7 @@ function profile() {
           </div>
         </div>
 
-        <div className="w-full mb-12 rounded-lg flex flex-wrap items-center justify-between px-4 py-6 border-2 mt-8 border-slate-600">
+        <div className="w-full mb-12 rounded-lg flex flex-wrap items-center justify-between px-4 py-6 border mt-8 border-slate-600">
           <div>
             <h3 className="text-xl font-semibold">Close account</h3>
 

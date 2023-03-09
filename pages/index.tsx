@@ -3,15 +3,16 @@ import { useRouter } from "next/router";
 import Sidebar from "../components/Sidebar";
 import BottomTab from "../components/BottomTab";
 import {CiCreditCard1} from "react-icons/ci"
+import { useAuth } from "../zustand/auth.store";
 
 function index() {
   const router = useRouter()
   const isSignedIn: any = () => {
-    return true;
+    return useAuth.getState().loggedIn;
   };
 
   useEffect(() => {
-    if (isSignedIn === false) {
+    if (isSignedIn() === false) {
       router.replace("/login")
     }
   }, []);
