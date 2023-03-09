@@ -10,6 +10,7 @@ function index() {
   const isSignedIn: any = () => {
     return useAuth.getState().loggedIn;
   };
+  
 
   useEffect(() => {
     if (isSignedIn() === false) {
