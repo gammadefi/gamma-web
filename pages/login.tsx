@@ -20,7 +20,7 @@ const login = () => {
         }, 5000);
     }
   return (
-    <div style={{backgroundImage:'url(/element2.svg)', backgroundPosition:"center", backgroundSize:"cover", backgroundRepeat:"no-repeat"}} className='h-screen bg-gray-900 text-white px-8 py-8 flex items-center justify-center'>
+    <div style={{backgroundImage:'url(/Element2.svg)', backgroundPosition:"center", backgroundSize:"cover", backgroundRepeat:"no-repeat"}} className='h-screen bg-gray-900 text-white px-8 py-8 flex items-center justify-center'>
         <div className='max-w-2xl'>
             <div className='flex items-center justify-center gap-3'>
                 <img src='/logod.svg' className='h-8 w-auto mx-auto' alt='G' />
