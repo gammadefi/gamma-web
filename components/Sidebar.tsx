@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { RiHome5Fill,RiHome5Line } from "react-icons/ri";
 import { BsWallet2 } from "react-icons/bs";
 import { IoIosSwap } from "react-icons/io";
@@ -6,22 +6,57 @@ import { CgProfile } from "react-icons/cg";
 import {MdLogout} from "react-icons/md"
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Modal from "./Modal";
+import { useAuth } from "../zustand/auth.store";
 
 const Sidebar = () => {
   const router = useRouter();
+  const [logout, setLogout] = useState(false)
 
   console.log(router.pathname);
 
   const logOut = () => {
-    router.replace("/login")
+   setLogout(true)
   }
 
   return (
     <div className="md:block relative shrink-0 bg-gray-800 hidden py-4 px-3 border-gray-600 w-48 md:w-72 h-full border-r">
+      <Modal onClick={() => setLogout(false)} open={logout}>
+            <div className="w-[300px] p-5">
+              <h6 className="text-center text-gray-800 text-lg font-semibold">
+                Logout
+              </h6>
+              <p className="mt-4 text-center  text-gray-700 font-normal">
+                Are you sure you want to log out?
+              </p>
+              <div className="flex mt-6 items-center justify-center">
+                <div className="mr-1">
+                  <button
+                    className="bg-white  text-blue-600 mr-2 font-semibold px-3 h-10"
+                    onClick={() => setLogout(false)}
+                  >
+                    Cancel
+                  </button>
+                </div>
+                <div className="ml-1">
+                <button
+                    className="bg-blue-600 flex items-center justify-center rounded  text-primary mr-2 font-semibold px-3 h-10"
+                    onClick={() => {
+                      useAuth.getState().logout();
+                      setLogout(false)
+                    }}
+                  >
+                    Log Out
+                  </button>
+                 
+                </div>
+              </div>
+            </div>
+          </Modal>
       <div>
-        <img src="/logo-dark.svg" className="mx-auto w-10 h-10 mt-5" />
+        <img src="/logod.svg" className="mx-auto w-auto h-8 mt-5" />
       </div>
-      <div className="block mt-4 ">
+      <div className="block mt-6 ">
         <ul>
           <li
             className={`hover:bg-slate-600 ${
@@ -70,7 +105,7 @@ const Sidebar = () => {
         </ul>
       </div>
       <div className="w-full absolute bottom-0  px-4 py-4">
-         <button onClick={() => logOut()} className="flex items-center gap-4 px-3">
+         <button onClick={() => logOut()} className="flex text-red-500 items-center gap-4 px-3">
             <MdLogout size={24} />
             Logout
          </button>
