@@ -1,30 +1,37 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Sidebar from "../components/Sidebar";
 import BottomTab from "../components/BottomTab";
 import {CiCreditCard1} from "react-icons/ci"
 import { useAuth } from "../zustand/auth.store";
+import Loader from "../components/Loader";
 
 function index() {
+  
+  const [loading, setLoading] = useState(true)
+
   const router = useRouter()
-  const isSignedIn: any = () => {
-    return useAuth.getState().loggedIn;
-  };
+  useEffect(() => {
+    if (useAuth.getState().loggedIn === false) {
+      router.push('/login');
+      
+    }
+    setTimeout(() => {
+      setLoading(false)
+    }, 1000);
+  }, [useAuth.getState().loggedIn]);
   
 
-  useEffect(() => {
-    if (isSignedIn() === false) {
-      router.replace("/login")
-    }
-  }, []);
 
   return (
-    <div className="h-screen bg-gray-900 text-white sm:flex items-center">
+    <>
+       {loading && useAuth.getState().loggedIn === false ? <Loader/> : (
+      <div className="h-screen bg-gray-900 text-white sm:flex items-center">
       <Sidebar />
       <BottomTab />
       <div className='overflow-y-auto h-full w-full'>
         <div className='w-full py-8 px-4 md:px-12 md:py-12'>
-            <h4 className='text-sm md:text-lg font-semibold'>Hi @Emekaag</h4>
+            <h4 className='text-sm md:text-lg font-semibold'>Hi @{useAuth.getState().profile?.firstName}</h4>
             <div className="w-full flex items-center  mt-4 justify-center">
                 <div>
                   <img src="/card.png" className="h-40 w-auto mx-auto mt-8" />
@@ -37,6 +44,10 @@ function index() {
 
       </div>
     </div>
+    )}
+    </>
+ 
+   
   );
 }
 

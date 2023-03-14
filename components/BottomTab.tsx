@@ -5,6 +5,7 @@ import { IoIosSwap } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { TbReceipt2 } from 'react-icons/tb';
 
 const BottomTab = () => {
     const router  = useRouter()
@@ -27,6 +28,11 @@ const BottomTab = () => {
               router.pathname === "/swap" ? " text-blue-300" : " text-gray-300"
             }   text-center pt-2 pb-1`}>
        <IoIosSwap size={20} />
+      </Link>
+      <Link href="transactions" className={`${
+              router.pathname === "/transactions" ? " text-blue-300" : " text-gray-300"
+            }   text-center pt-2 pb-1`}>
+       <TbReceipt2 size={22} />
       </Link>
       <Link href="profile" className={`${
               router.pathname === "/profile" ? " text-blue-300" : " text-gray-300"

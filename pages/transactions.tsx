@@ -12,7 +12,7 @@ import { useAuth } from "../zustand/auth.store";
 import { useRouter } from "next/router";
 import Loader from "../components/Loader";
 
-function wallet() {
+function transactions() {
   const [receiveModal, setIsReceiveModal] = useState<boolean>(false)  
   const [loading, setLoading] = useState(true)
 
@@ -55,36 +55,24 @@ function wallet() {
        <BottomTab />
        <div className="overflow-y-auto h-full w-full">
          <div className="w-full py-8 px-4 md:px-12 md:py-12">
-           <h4 className="text-sm md:text-base font-semibold">
-             POLYGON MAINNET
-           </h4>
            <div className="flex gap-3 mt-2 items-center">
-             <h2 className="font-bold text-2xl mt-0 md:text-4xl">$0.00</h2>
+             <h2 className="font-bold text-2xl mt-0 md:text-4xl">Transactions</h2>
              <AiOutlineInfoCircle />
            </div>
  
-           <div className="mt-8 flex items-center gap-3">
-             <button
-               onClick={() => setIsReceiveModal(true)}
-               style={{ padding: "10px 20px", width: "120px" }}
-               className="bg-slate-800 flex items-center justify-center gap-2 border font-bold border-slate-500 rounded-lg"
-             >
-               <AiOutlineQrcode /> Receive
-             </button>
- 
-             <button
-               style={{ padding: "10px 20px", width: "120px" }}
-               className="bg-slate-800 flex items-center justify-center gap-2 border font-bold border-slate-500 rounded-lg"
-             >
-               <FiSend /> send
-             </button>
-           </div>
-           <a target='_blank' className="flex items-center gap-3 mt-3 text-gray-300" href={`https://polygonscan.com/address/${profile.walletAddress}`}>View all transactions <BsBoxArrowInUpRight/></a>
          </div>
  
-         <div className="overflow-x-auto md:mb-0 mb-20 relative">
+         <div className="overflow-x-auto min-h-screen bg-slate-800 md:mb-0 mb-20 relative">
+            <div className="w-full rounded-t-md border-slate-600 border-b-2 bg-slate-700 ">
+                <div className="flex w-full items-center px-4 py-6   gap-2">
+                    <button className="px-4 py-2 font-semibold text-lg border-b-4 border-white flex items-center justify-center">Wallet Transactions</button>
+                    <button className="px-4 py-2 font-semibold text-lg text-gray-400 flex items-center justify-center">Card Transactions</button>
+
+                </div>
+
+            </div>
  
-           <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+           {/* <table className="w-full text-sm text-left text-gray-500">
              
              <thead className="text-sm text-gray-500 bg-slate-700  ">
                <tr>
@@ -307,7 +295,7 @@ function wallet() {
                  </td>
                </tr>
              </tbody>
-           </table>
+           </table> */}
          </div>
        </div>
      </div>
@@ -317,4 +305,4 @@ function wallet() {
   );
 }
 
-export default wallet;
+export default transactions;

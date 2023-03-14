@@ -3,6 +3,7 @@ import { RiHome5Fill,RiHome5Line } from "react-icons/ri";
 import { BsWallet2 } from "react-icons/bs";
 import { IoIosSwap } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
+import {TbReceipt2} from "react-icons/tb"
 import {MdLogout} from "react-icons/md"
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -88,6 +89,17 @@ const Sidebar = () => {
             <Link href="swap" className=" gap-3 w-full flex items-center">
               <IoIosSwap size={24} />
               <h4 className="font-semibold  ">Swap</h4>
+            </Link>
+           
+          </li>
+          <li
+            className={`hover:bg-slate-600 ${
+              router.pathname === "/transactions" ? " text-blue-300" : " text-gray-300"
+            }  mt-3 gap-3 w-full flex items-center px-8 active:text-blue-300 h-14 rounded-full`}
+          >
+            <Link href="transactions" className=" gap-3 w-full flex items-center">
+              <TbReceipt2 size={24} />
+              <h4 className="font-semibold  ">Transaction</h4>
             </Link>
           </li>
           <li

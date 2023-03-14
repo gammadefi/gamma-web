@@ -16,7 +16,8 @@ export const useAuth = create(
         loggedIn: false,
         token: null as string | null | AxiosBasicCredentials,
         userId: null as string | null,
-        profile: null,
+        profile: null as object | any,
+        initial: null as object | any,
         role: null as ROLE | null | string,
       },
       (set) => ({
@@ -28,6 +29,9 @@ export const useAuth = create(
         },
         setUserProfile: (profile: any) => {
           set({ profile, loggedIn: true });
+        },
+        setInitial: (initial : any) => {
+          set({initial})
         },
         setUserRoleType: (role: string) => {
           set({ role });
@@ -63,6 +67,9 @@ export const AuthActions = {
   },
   setProfile: (profile: any) => {
     useAuth.getState().setUserProfile(profile);
+  },
+  setInitial: (initial: any) => {
+    useAuth.getState().setInitial(initial)
   },
   setRole: (role: string) => {
     useAuth.setState({ role });
