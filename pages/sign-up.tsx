@@ -102,7 +102,7 @@ const signUp = () => {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
       }}
-      className="h-screen bg-gray-900 text-white px-8 py-8 flex items-center justify-center"
+      className="min-h-screen bg-gray-900 text-white px-8 py-8 flex items-center justify-center"
     >
       <div className="max-w-2xl">
         <div className="flex items-center justify-center gap-3">

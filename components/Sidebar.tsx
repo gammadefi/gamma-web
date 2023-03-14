@@ -21,7 +21,7 @@ const Sidebar = () => {
   }
 
   return (
-    <div className="md:block relative shrink-0 bg-gray-800 hidden py-4 px-3 border-gray-600 w-48 md:w-72 h-full border-r">
+    <div className="md:block relative shrink-0 bg-gray-900 hidden py-4 px-3 border-gray-600 w-48 md:w-72 h-full border-r">
       <Modal onClick={() => setLogout(false)} open={logout}>
             <div className="w-[300px] p-5">
               <h6 className="text-center text-gray-800 text-lg font-semibold">
