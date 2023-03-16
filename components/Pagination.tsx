@@ -70,7 +70,29 @@ export function PaginationNav1({
           disabled={!canPreviousPage}
         />
       </li>
+      <li>
+        <Button2
+          content={
+            <div className="flex ml-1">
+              <FaChevronLeft size="0.6rem" />
+            </div>
+          }
+          onClick={() => gotoPage(pageIndex -1)}
+          disabled={pageIndex === 0}
+        />
+      </li>
       {renderPageLinks()}
+      <li>
+        <Button2
+          content={
+            <div className="flex ml-1">
+              <FaChevronRight size="0.6rem" />
+            </div>
+          }
+          onClick={() => gotoPage(pageIndex + 1)}
+          disabled={pageIndex === pageCount -1}
+        />
+      </li>
       <li>
         <Button2
           content={

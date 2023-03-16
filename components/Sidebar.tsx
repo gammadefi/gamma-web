@@ -71,22 +71,22 @@ const Sidebar = () => {
           </li>
           <li
             className={`hover:bg-slate-600 ${
-              router.pathname === "/wallet"
+              router.pathname.includes("/wallet")
                 ? " text-blue-300"
                 : " text-gray-300"
             }  mt-3 gap-3 w-full flex items-center px-8 active:text-blue-300 h-14 rounded-full`}
           >
-            <Link href="wallet" className=" gap-3 w-full flex items-center">
+            <Link href="/wallet" className=" gap-3 w-full flex items-center">
               <BsWallet2 size={24} />
               <h4 className="font-semibold">wallet</h4>
             </Link>
           </li>
           <li
             className={`hover:bg-slate-600 ${
-              router.pathname === "/swap" ? " text-blue-300" : " text-gray-300"
+              router.pathname.includes("/swap") ? " text-blue-300" : " text-gray-300"
             }  mt-3 gap-3 w-full flex items-center px-8 active:text-blue-300 h-14 rounded-full`}
           >
-            <Link href="swap" className=" gap-3 w-full flex items-center">
+            <Link href="/swap" className=" gap-3 w-full flex items-center">
               <IoIosSwap size={24} />
               <h4 className="font-semibold  ">Swap</h4>
             </Link>
@@ -97,7 +97,7 @@ const Sidebar = () => {
               router.pathname === "/transactions" ? " text-blue-300" : " text-gray-300"
             }  mt-3 gap-3 w-full flex items-center px-8 active:text-blue-300 h-14 rounded-full`}
           >
-            <Link href="transactions" className=" gap-3 w-full flex items-center">
+            <Link href="/transactions" className=" gap-3 w-full flex items-center">
               <TbReceipt2 size={24} />
               <h4 className="font-semibold  ">Transaction</h4>
             </Link>
@@ -109,7 +109,7 @@ const Sidebar = () => {
                 : " text-gray-300"
             }  mt-3 gap-3 w-full flex items-center px-8 active:text-blue-300 h-14 rounded-full`}
           >
-            <Link href="profile" className=" gap-3 w-full flex items-center">
+            <Link href="/profile" className=" gap-3 w-full flex items-center">
               <CgProfile size={24} />
               <h4 className="font-semibold ">Profile</h4>
             </Link>

@@ -21,9 +21,9 @@ const Modal: FunctionComponent<ModalPropsInterface> = ({ children, onClick = () 
 			<div className="flex items-center justify-around min-w-44 h-screen">
 				<div
 					ref={modalRef}
-					className="modal items-center align-middle max-w-2xl  bg-white rounded"
+					className="modal  max-w-2xl relative bg-white rounded"
 				>
-					<div className="modal-head flex justify-between items-center px-1 py-1 ">
+					<div className="modal-head absolute right-2 top-1 px-1 py-1 ">
 						<a
 							onClick={onClick}
 							href="#"
@@ -46,7 +46,7 @@ const Modal: FunctionComponent<ModalPropsInterface> = ({ children, onClick = () 
 							</svg>
 						</a>
 					</div>
-					<div className="modal-body p-5 ">{children}</div>
+					<div className="modal-body p-3">{children}</div>
 				</div>
 			</div>
 		</div>

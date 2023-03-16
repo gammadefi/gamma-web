@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FiSend } from "react-icons/fi";
 import { AiOutlineInfoCircle, AiOutlineQrcode } from "react-icons/ai";
 import {IoIosCopy} from "react-icons/io"
+import {useQuery} from "react-query"
 import {BsBoxArrowInUpRight} from "react-icons/bs"
 import Link from "next/link";
 import Sidebar from "../components/Sidebar";
@@ -11,16 +12,33 @@ import QRCode from "react-qr-code";
 import { useAuth } from "../zustand/auth.store";
 import { useRouter } from "next/router";
 import Loader from "../components/Loader";
+import { TransactionService } from "../services/Transaction.service";
+import { PaginationNav1 } from "../components/Pagination";
+import Loader2 from "../components/Loader2";
+import { fToNow, toDateTime } from "../utils/formatTime";
 
 function transactions() {
   const [receiveModal, setIsReceiveModal] = useState<boolean>(false)  
   const [loading, setLoading] = useState(true)
+  const [pageIndex, setPageIndex] = useState(0);
+  let t = new Date(1970, 0, 1);
 
   const router = useRouter()
 
   const profile = useAuth.getState().profile
 
-  
+  const {data ,isFetching} = useQuery(
+    "transactions",
+    async () => {
+        return await TransactionService.walletTransactions("0x62b6EdA36f4b2023e3E86ADDa78bE5C4dE56800C")
+    },
+    {
+        onSuccess: (res) => {
+            console.log(res);
+            
+        }
+    }
+  )
 
   useEffect(() => {
     if (useAuth.getState().loggedIn === false) {
@@ -40,6 +58,7 @@ function transactions() {
     <>
     {loading && useAuth.getState().loggedIn === false ? <Loader/> : (
        <div className="h-screen bg-gray-900 text-white sm:flex items-center">
+        {isFetching && <Loader2 />}
        <Modal open={receiveModal} onClick={() => closeModal()} > 
          <div className="w-56 md:w-96 py-4">
              <h3 className="text-center text-2xl font-bold text-black">Scan QR Code</h3>
@@ -71,231 +90,71 @@ function transactions() {
                 </div>
 
             </div>
- 
-           {/* <table className="w-full text-sm text-left text-gray-500">
-             
-             <thead className="text-sm text-gray-500 bg-slate-700  ">
-               <tr>
-                 <th scope="col" className="py-3 px-6 h-12">
-                   Name
-                 </th>
-                 <th scope="col" className="py-3 px-6 h-12">
-                   Balance
-                 </th>
-                 <th scope="col" className="py-3  px-6 h-12">
-                   Actions
-                 </th>
-                 <th scope="col" className="py-3 px-6  h-12">
-                   Buy
-                 </th>
-               </tr>
-             </thead>
-             <tbody>
-               <tr className=" border-slate-700 border-b bg-slate-800">
-                 <th
-                   scope="row"
-                   className="py-4 px-6 font-medium  whitespace-nowrap text-white"
-                 >
-                      <div className="flex items-center gap-2">
-                         <img src="/eth.svg" />
-                         <span>ETH • <span className="text-gray-400">Ether - PoS</span></span>
-                     </div>
-                     
-                   
-                 </th>
-                 <td className="py-4 px-6">
-                   0.00 • <span className="text-gray-400">$0.00</span>
-                 </td>
-                 <td className="py-4  px-6">
-                   <div className="flex  items-center gap-3">
-                     <button
-                       style={{ padding: "10px 20px", width: "120px" }}
-                       className="bg-slate-800 flex items-center justify-center gap-2 border font-bold border-slate-500 rounded-lg"
-                     >
-                       <AiOutlineQrcode /> Receive
-                     </button>
- 
-                     <button
-                       style={{ padding: "10px 20px", width: "120px" }}
-                       className="bg-slate-800 flex items-center justify-center gap-2 border font-bold border-slate-500 rounded-lg"
-                     >
-                       <FiSend /> send
-                     </button>
-                   </div>
-                 </td>
-                 <td className="py-4  px-6">
-                   <button
-                     style={{ padding: "10px 20px", width: "120px" }}
-                     className="bg-slate-800 flex items-center justify-center gap-2 border font-bold border-slate-500 rounded-lg"
-                   >
-                     <FiSend /> Buy
-                   </button>
-                 </td>
-               </tr>
-               <tr className=" border-slate-700 border-b bg-slate-800">
-                 <th
-                   scope="row"
-                   className="py-4 px-6 font-medium  whitespace-nowrap text-white"
-                 >
-                     <div className="flex items-center gap-2">
-                         <img src="/usdc.svg" />
-                         <span>USDC • <span className="text-gray-400">USD coin </span></span>
-                     </div>
-                   
-                   
-                 </th>
-                 <td className="py-4 px-6">
-                   0.00 • <span className="text-gray-400">$0.00</span>
-                 </td>
-                 <td className="py-4 px-6 ">
-                   <div className="flex items-center gap-3">
-                     <button
-                       style={{ padding: "10px 20px", width: "120px" }}
-                       className="bg-slate-800 flex items-center justify-center gap-2 border font-bold border-slate-500 rounded-lg"
-                     >
-                       <AiOutlineQrcode /> Receive
-                     </button>
- 
-                     <button
-                       style={{ padding: "10px 20px", width: "120px" }}
-                       className="bg-slate-800 flex items-center justify-center gap-2 border font-bold border-slate-500 rounded-lg"
-                     >
-                       <FiSend /> send
-                     </button>
-                   </div>
-                 </td>
-                 <td className="py-4 px-6 ">
-                   <button
-                     style={{ padding: "10px 20px", width: "120px" }}
-                     className="bg-slate-800 flex items-center justify-center gap-2 border font-bold border-slate-500 rounded-lg"
-                   >
-                     <FiSend /> Buy
-                   </button>
-                 </td>
-               </tr>
-               <tr className=" border-slate-700 border-b bg-slate-800">
-                 <th
-                   scope="row"
-                   className="py-4 px-6 font-medium  whitespace-nowrap text-white"
-                 >
-                     <div className="flex items-center gap-2">
-                         <img src="/matic.svg" />
-                         <span>MATIC • <span className="text-gray-400">Matic - Token </span></span>
-                     </div>
-                     
-                   
-                 </th>
-                 <td className="py-4 px-6">
-                   0.00 • <span className="text-gray-400">$0.00</span>
-                 </td>
-                 <td className="py-4 px-6 ">
-                   <div className="flex items-center gap-3">
-                     <button
-                       style={{ padding: "10px 20px", width: "120px" }}
-                       className="bg-slate-800 flex items-center justify-center gap-2 border font-bold border-slate-500 rounded-lg"
-                     >
-                       <AiOutlineQrcode /> Receive
-                     </button>
- 
-                     <button
-                       style={{ padding: "10px 20px", width: "120px" }}
-                       className="bg-slate-800 flex items-center justify-center gap-2 border font-bold border-slate-500 rounded-lg"
-                     >
-                       <FiSend /> send
-                     </button>
-                   </div>
-                 </td>
-                 <td className="py-4 px-6 ">
-                   <button
-                     style={{ padding: "10px 20px", width: "120px" }}
-                     className="bg-slate-800 flex items-center justify-center gap-2 border font-bold border-slate-500 rounded-lg"
-                   >
-                     <FiSend /> Buy
-                   </button>
-                 </td>
-               </tr>
-               <tr className=" border-slate-700 border-b bg-slate-800">
-                 <th
-                   scope="row"
-                   className="py-4 px-6 font-medium  whitespace-nowrap text-white"
-                 >
-                     <div className="flex items-center gap-2">
-                         <img src="/usdt.svg" />
-                         <span>USDT • <span className="text-gray-400">Tether - USD </span></span>
-                     </div>
+            <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                <thead className="text-sm text-gray-500 bg-slate-700  ">
+                  <tr>
+                    <th scope="col" className="py-3 px-6 h-12">
+                    Txn Hash 
+                    </th>
+                    <th scope="col" className="py-3 px-6  h-12">
+                      Age
+                    </th>
+                    <th scope="col" className="py-3 px-6  h-12">
+                      from
+                    </th>
+                    <th scope="col" className="py-3 px-6  h-12">
+                      
+                    </th>
+                    <th scope="col" className="py-3 px-6  h-12">
+                      to
+                    </th>
+                    <th scope="col" className="py-3 px-6  h-12">
+                      Value
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {data?.data.result
+                  .slice(pageIndex * 10, pageIndex * 10 + 10)
+                  .map((items: any, i : any) => 
+                  <tr key={i} className=" border-slate-700 border-b bg-slate-800">
+                  <th
+                    scope="row"
+                    className="py-4 break-all px-6 font-medium  text-white"
+                  >
+                   {items.hash}
+                  </th>
+                  <td className="py-4 px-6 whitespace-nowrap">
+                    {toDateTime(items?.timeStamp)}
+                  </td>
+                  <td className="py-4 break-all  px-6">
+                    {items.from}
+                  </td>
+                  <td className="py-4 break-all  px-6">
+                    {items.to == ("0x62b6EdA36f4b2023e3E86ADDa78bE5C4dE56800C".toLocaleLowerCase()) ? <span className="px-2 py-1 flex items-center rounded justify-center bg-green-200 whitespace-nowrap  text-green-900">IN</span> : <span className="px-2 py-1 flex rounded items-center whitespace-nowrap justify-center bg-orange-200 text-orange-900">OUT</span>}
+                  </td>
+                  <td className="py-4 break-all  px-6">
+                    {items.to}
+                  </td>
+                  <td className="py-4 text-white  px-6">
+                    {(parseFloat(items.value) / 1e18).toFixed(5)} Matic
+                  </td>
+                </tr>
+                   )}
                   
-                 </th>
-                 <td className="py-4 px-6">
-                   0.00 • <span className="text-gray-400">$0.00</span>
-                 </td>
-                 <td className="py-4 px-6 ">
-                   <div className="flex items-center gap-3">
-                     <button
-                       style={{ padding: "10px 20px", width: "120px" }}
-                       className="bg-slate-800 flex items-center justify-center gap-2 border font-bold border-slate-500 rounded-lg"
-                     >
-                       <AiOutlineQrcode /> Receive
-                     </button>
+               
+                </tbody>
+              </table>
+              <div className="ml-auto px-3 py-3">
+                <PaginationNav1
+                  gotoPage={setPageIndex}
+                  canPreviousPage={pageIndex > 0}
+                  canNextPage={pageIndex < data?.data?.result?.length - 1}
+                  pageCount={(data?.data.result.length / 10).toFixed(0)}
+                  pageIndex={pageIndex}
+                />
+              </div>
  
-                     <button
-                       style={{ padding: "10px 20px", width: "120px" }}
-                       className="bg-slate-800 flex items-center justify-center gap-2 border font-bold border-slate-500 rounded-lg"
-                     >
-                       <FiSend /> send
-                     </button>
-                   </div>
-                 </td>
-                 <td className="py-4 px-6 ">
-                   <button
-                     style={{ padding: "10px 20px", width: "120px" }}
-                     className="bg-slate-800 flex items-center justify-center gap-2 border font-bold border-slate-500 rounded-lg"
-                   >
-                     <FiSend /> Buy
-                   </button>
-                 </td>
-               </tr>
-               <tr className=" border-slate-700 border-b bg-slate-800">
-                 <th
-                   scope="row"
-                   className="py-4 px-6 font-medium  whitespace-nowrap text-white"
-                 >
-                     <div className="flex items-center gap-2">
-                         <img src="/dai.svg" />
-                         <span> DAI • <span className="text-gray-400">Dai - PoS </span></span>
-                     </div>
-                  
-                 </th>
-                 <td className="py-4 px-6">
-                   0.00 • <span className="text-gray-400">$0.00</span>
-                 </td>
-                 <td className="py-4 px-6 ">
-                   <div className="flex items-center gap-3">
-                     <button
-                       style={{ padding: "10px 20px", width: "120px" }}
-                       className="bg-slate-800 flex items-center justify-center gap-2 border font-bold border-slate-500 rounded-lg"
-                     >
-                       <AiOutlineQrcode /> Receive
-                     </button>
- 
-                     <button
-                       style={{ padding: "10px 20px", width: "120px" }}
-                       className="bg-slate-800 flex items-center justify-center gap-2 border font-bold border-slate-500 rounded-lg"
-                     >
-                       <FiSend /> send
-                     </button>
-                   </div>
-                 </td>
-                 <td className="py-4 px-6 ">
-                   <button
-                     style={{ padding: "10px 20px", width: "120px" }}
-                     className="bg-slate-800 flex items-center justify-center gap-2 border font-bold border-slate-500 rounded-lg"
-                   >
-                     <FiSend /> Buy
-                   </button>
-                 </td>
-               </tr>
-             </tbody>
-           </table> */}
          </div>
        </div>
      </div>

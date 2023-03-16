@@ -19,6 +19,7 @@ export const useAuth = create(
         profile: null as object | any,
         initial: null as object | any,
         role: null as ROLE | null | string,
+        balance : null as | object | any
       },
       (set) => ({
         setLoggedIn: (value: boolean) => {
@@ -35,6 +36,9 @@ export const useAuth = create(
         },
         setUserRoleType: (role: string) => {
           set({ role });
+        },
+        setBalance: (balance : any) => {
+          set({balance})
         },
         logout: () => {
           set({
@@ -73,6 +77,9 @@ export const AuthActions = {
   },
   setRole: (role: string) => {
     useAuth.setState({ role });
+  },
+  setBalance: (balance : any) => {
+    useAuth.getState().setBalance(balance)
   },
   setLoggedUserIn: (val : boolean) => {
     useAuth.getState().setLoggedIn(val);

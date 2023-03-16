@@ -2,7 +2,7 @@ import axios, { AxiosRequestConfig } from "axios";
 import { Config } from "./config";
 import { AuthActions, useAuth } from "../zustand/auth.store";
 
-export const createApiClient = (auth = true) => {
+export const createApiClient = (auth = true,test = false) => {
   const config: AxiosRequestConfig | any = {
     baseURL: Config.apiUrl,
   };
@@ -10,16 +10,24 @@ export const createApiClient = (auth = true) => {
     deviceName : "Linuxx",
     deviceip:"127.0.0.2"
   }
-  if (auth) {
+  if (auth && test === false) {
     const token: any = useAuth.getState().token;
     if (token) {
       config.headers = {
+        ...config.headers,
         Authorization: `Bearer ${token}`,
       };
     }
     // if (token) {
     //   config.auth = token
     // }
+  }else{
+    const token: any = useAuth.getState().token;
+    if (token) {
+      config.headers = {
+        
+      };
+    }
   }
   const client = axios.create(config);
   client.interceptors.response.use(

@@ -1,32 +1,36 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import {AiOutlineSetting} from "react-icons/ai"
 import {MdOutlineSwapVert} from "react-icons/md"
 import Link from 'next/link'
 import Sidebar from '../components/Sidebar'
 import BottomTab from '../components/BottomTab'
+import { useAuth } from '../zustand/auth.store'
+import { useRouter } from 'next/router'
+import Loader from '../components/Loader'
 
 function swap() {
-
-  const isSignedIn: any = () => {
-    return true
-    
-  }
+  const router = useRouter()
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    if (isSignedIn === false) {
-      location.replace("/login")
-   }
-    
-  }, [])
+    if (useAuth.getState().loggedIn === false) {
+      router.push("/login");
+    }
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, [useAuth.getState().loggedIn]);
   
 
   
   return (
-    <div className='h-screen bg-gray-900 text-white sm:flex items-center'>
+    <>
+    {loading ? <Loader /> : (
+       <div className='h-screen bg-gray-900 text-white sm:flex items-center'>
       <Sidebar />
       <BottomTab />
       <div className='overflow-y-auto h-full w-full'>
-        <div className='w-full justify-center flex py-8'>
+        <div className='w-full h-full items-center justify-center flex py-8'>
             <div className='md:w-[420px] mb-8 md:mb-0 sm:w-80 w-72 border border-slate-500  px-3 rounded-lg py-3'>
                 <div className='flex py-2 items-center justify-between'>
                     <h4 className='text-lg font-bold'>Swap</h4>
@@ -66,6 +70,10 @@ function swap() {
 
       </div>
     </div>
+    )}
+    
+    </>
+   
   )
 }
 
