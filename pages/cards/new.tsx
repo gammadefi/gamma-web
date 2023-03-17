@@ -60,14 +60,14 @@ function newCard() {
               </h3>
               <h5 className="text-gray-300 text-sm">Select wallet to fund your card</h5>
               <div className="mx-auto mt-6 md:w-[400px] sm:w-[320px] w-full">
-                <button className="h-14 flex items-center gap-4  px-4 rounded bg-slate-700 border border-gray-300 w-full">
-                    <img src="/logo-light.svg" className="h-8 w-auto" />
+                <button className="h-16 focus:border-4 focus:border-white flex items-center gap-4  px-4 rounded bg-slate-700 border border-gray-300 w-full">
+                    <img src="/loader.svg" className="h-8 w-auto" />
                      <div>
                         <h3 className="text-left font-semibold">Gamma Wallet</h3>
                         <h5 className="text-left text-gray-300 text-[12px]">Fund with gammapay wallet</h5>
                      </div>
                 </button>
-                <button className="h-14 flex mt-6 items-center gap-4  px-4 rounded bg-slate-700 border border-gray-300 w-full">
+                <button className="h-16 focus:border-4 focus:border-white flex mt-6 items-center gap-4  px-4 rounded bg-slate-700 border border-gray-300 w-full">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Binance_Logo.svg/800px-Binance_Logo.svg.png" className="h-8 w-auto" />
                      <div>
                         <h3 className="text-left font-semibold">Binance Pay</h3>

@@ -18,17 +18,14 @@ export const createApiClient = (auth = true,test = false) => {
         Authorization: `Bearer ${token}`,
       };
     }
-    // if (token) {
-    //   config.auth = token
-    // }
-  }else{
+  }else if(test === true) {
     const token: any = useAuth.getState().token;
     if (token) {
       config.headers = {
         
       };
-    }
   }
+}
   const client = axios.create(config);
   client.interceptors.response.use(
     (res) => {

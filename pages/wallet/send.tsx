@@ -94,8 +94,6 @@ function send() {
                         placeholder="Enter Recipient Address"
                         className="h-14 w-full pr-6  focus:outline-none px-3 bg-transparent"
                       />
-                      
-                        <BiPaste onClick={() =>{ console.log(navigator.clipboard.read())}} className="absolute right-2 bottom-4" size={20} />
                     </div>
 
                     <div className="bg-slate-800 rounded-lg my-3 pt-4 w-full">
