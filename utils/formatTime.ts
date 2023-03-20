@@ -30,7 +30,7 @@ export function formatDate(currentDate : string){
 export function toDateTime(secs : number) {
   var t = new Date(1970, 0, 1); // Epoch
   t.setSeconds(secs);
-  console.log(t);
+  // console.log(t);
   
   return fToNow(t);
 }

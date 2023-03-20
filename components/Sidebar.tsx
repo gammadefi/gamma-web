@@ -53,7 +53,7 @@ const Sidebar = () => {
                 </div>
               </div>
             </div>
-          </Modal>
+      </Modal>
       <div>
         <img src="/logod.svg" className="mx-auto w-auto h-8 mt-5" />
       </div>

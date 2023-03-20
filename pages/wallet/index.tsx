@@ -46,7 +46,7 @@ function wallet() {
   const { data: data, isFetching } = useQuery(
     profile?.walletAddress,
     async () => {
-      return await WalletService.getTestBalance(profile?.walletAddress);
+      return await WalletService.getBalance(profile?.walletAddress);
     },
     {
       onSuccess: (res) => {
@@ -71,6 +71,11 @@ function wallet() {
       },
     }
   );
+
+  const buyAssetts = () => {
+
+    const paymentLink = `https://buy.moonpay.com/?apiKey=pk_live_28pm2uCmJ5FlH9FqDZKBTsFvbSf9T4c&currencyCode=matic&baseCurrencyAmount=${0}&baseCurrencyCode=usd&paymentMethod=credit_debit_card&redirectURL=https%3A%2F%2Fportfolio.metamask.io%2Fbuy%2Forder-process%2Fmoonpay-b&walletAddress=${profile.walletAddress}&signature=HtU4djhWDB65wofldnYUUGa0EhUqLvidJa7ztmAMD0I%3D`
+  }
 
   const closeModal = () => {
     setIsReceiveModal(false);
@@ -140,7 +145,12 @@ function wallet() {
 
                 <button
                   onClick={() => {
-                    router.push("wallet/send");
+                    router.push(
+                      {
+                          pathname:'wallet/send',
+                          query:{tokenAddress:"0x0000000000000000000000000000000000001010",name : "Matic Token"}
+                      }
+                  );
                     AuthActions.setBalance({
                       balance: walletV,
                       value: walletBalance,
@@ -152,13 +162,10 @@ function wallet() {
                   <FiSend /> send
                 </button>
               </div>
-              <a
-                target="_blank"
-                className="flex items-center gap-3 mt-3 text-gray-300"
-                href={`https://polygonscan.com/address/${profile.walletAddress}`}
-              >
-                View all transactions <BsBoxArrowInUpRight />
-              </a>
+              <Link href="/transactions" className="flex items-center gap-3 mt-3 text-gray-300">
+              View all transactions <BsBoxArrowInUpRight />
+              </Link>
+              
             </div>
 
             <div className="overflow-x-auto md:mb-0 mb-20 bg-slate-800 relative">
@@ -250,7 +257,7 @@ function wallet() {
                             <FiSend /> Buy
                           </button>
                         </td>
-                      </tr>)}
+                  </tr>)}
                   
                
                 </tbody>

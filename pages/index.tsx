@@ -12,10 +12,10 @@ function index() {
 
   const router = useRouter()
   useEffect(() => {
-    if (useAuth.getState().loggedIn === false) {
-      router.push('/login');
+    // if (useAuth.getState().loggedIn === false) {
+    //   router.push('/login');
       
-    }
+    // }
     setTimeout(() => {
       setLoading(false)
     }, 1000);
