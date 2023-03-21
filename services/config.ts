@@ -1,5 +1,5 @@
 export const Config = {
-  apiUrl: "https://gammapay.onrender.com",
+  apiUrl: "https://gammapay.onrender.com", 
   // apiUrl: "http://localhost:5000",
   defaults: {
     paginator: {
