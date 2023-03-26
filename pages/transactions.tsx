@@ -40,6 +40,7 @@ function transactions() {
     "transactions",
     async () => {
       return await TransactionService.wallet(profile.walletAddress);
+      // return await TransactionService.wallet("0x6429b8bAA710472e69C226cfE3b913124dD37028")
     },
     {
       onSuccess: (res) => {
@@ -90,7 +91,7 @@ function transactions() {
                 to receive your wallet address
               </h5>
               <QRCode
-                value="0xebb07a5787650ba385ba7111fc4d3a994b6dbaa6"
+                value={profile.walletAddress}
                 className="mx-auto w-36 h-auto mt-3"
               />
               <h5 className="text-center font-semibold text-gray-800 mt-4">

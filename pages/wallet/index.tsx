@@ -251,6 +251,14 @@ function wallet() {
                         </td>
                         <td className="py-4  px-6">
                           <button
+                          onClick={() => {
+                            router.push(
+                              {
+                                  pathname:'wallet/buy',
+                                  query:{tokenAddress:items.tokenAddress,name : items.tokenName}
+                              }
+                          );
+                          }}
                             style={{ padding: "10px 20px", width: "120px" }}
                             className="bg-slate-800 flex items-center justify-center gap-2 border font-bold border-slate-500 rounded-lg"
                           >
